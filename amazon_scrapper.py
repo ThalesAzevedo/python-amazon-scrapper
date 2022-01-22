@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup as soup
 from openpyxl import Workbook
-from datetime import date
 import requests
+import random
 import os
 
 
@@ -65,7 +65,8 @@ class AmazonScrapper:
         for id, item in enumerate(list):
             sheet.append([id, item[0], item[1]])
 
-        workbook.save(f"outputs/amazon_{product}_{date.today()}.xlsx")
+        hash = random.getrandbits(24)
+        workbook.save(f"outputs/amazon_{product}_{hash}.xlsx")
         return True
 
 
